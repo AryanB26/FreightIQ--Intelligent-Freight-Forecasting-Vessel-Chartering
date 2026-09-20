@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://freightiq:freightiq@db:5432/freightiq
+      - FORECAST_API_URL=http://ml-service:8000
+    depends_on:
+      - db
+      - ml-service
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: freightiq
+      POSTGRES_PASSWORD: freightiq
+      POSTGRES_DB: freightiq
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  ml-service:
+    build: ./ml-service
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://freightiq:freightiq@db:5432/freightiq
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

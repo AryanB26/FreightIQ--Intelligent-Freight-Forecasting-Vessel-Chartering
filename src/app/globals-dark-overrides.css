@@ -1,0 +1,276 @@
+/* =============================================
+   GLOBAL THEME OVERRIDES (Dark & Light)
+   Controls theme switching across all components
+   while leaving map canvas rendering untouched.
+   ============================================= */
+
+@layer base {
+  html[data-theme="dark"], [data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  html[data-theme="light"], [data-theme="light"] {
+    color-scheme: light;
+  }
+
+  body, html {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text-primary) !important;
+  }
+
+  .bg-background {
+    background-color: var(--color-bg) !important;
+  }
+
+  .bg-card {
+    background-color: var(--color-bg-raised) !important;
+  }
+
+  .bg-muted, .bg-muted\/50, .bg-muted\/30, .bg-muted\/20, .bg-muted\/10 {
+    background-color: var(--color-bg-elevated) !important;
+  }
+
+  .text-foreground {
+    color: var(--color-text-primary) !important;
+  }
+
+  .text-primary {
+    color: var(--color-primary) !important;
+  }
+
+  .text-primary-foreground {
+    color: var(--color-primary-foreground) !important;
+  }
+
+  .text-secondary-foreground {
+    color: var(--color-secondary-foreground) !important;
+  }
+
+  .text-accent-foreground {
+    color: var(--color-accent-foreground) !important;
+  }
+
+  .text-destructive-foreground {
+    color: var(--color-destructive-foreground) !important;
+  }
+
+  .text-muted-foreground, .text-slate-400, .text-slate-500 {
+    color: var(--color-text-muted) !important;
+  }
+
+  .text-slate-600, .text-slate-700, .text-slate-800, .text-slate-900 {
+    color: var(--color-text-primary) !important;
+  }
+
+  .border, .border-border, .border-input, .border-slate-200, .border-slate-300, .border-slate-700, .border-slate-800 {
+    border-color: var(--color-border) !important;
+  }
+
+  /* --- Tables --- */
+  thead th, thead td {
+    background-color: var(--color-bg-raised) !important;
+    color: var(--color-text-muted) !important;
+    border-color: var(--color-border) !important;
+  }
+
+  tbody td {
+    border-color: var(--color-border) !important;
+  }
+
+  [data-orientation="horizontal"], hr {
+    background-color: var(--color-border) !important;
+  }
+
+  [role="tablist"] {
+    border-color: var(--color-border) !important;
+  }
+
+  [role="tab"] {
+    color: var(--color-text-muted) !important;
+  }
+
+  [role="tab"][aria-selected="true"], [role="tab"][data-state="active"] {
+    color: var(--color-text-primary) !important;
+    border-color: var(--color-border) !important;
+  }
+
+  [data-radix-popper-content-wrapper], [data-state="open"][role="dialog"], [data-state="open"][role="dialog"][data-side] {
+    background-color: var(--color-bg-raised) !important;
+    border-color: var(--color-border) !important;
+    color: var(--color-text-primary) !important;
+  }
+
+  .ring-ring, *:focus-visible {
+    --tw-ring-color: var(--color-border) !important;
+    outline-color: var(--color-border) !important;
+  }
+
+  .disabled\:opacity-50:disabled {
+    opacity: 0.4 !important;
+  }
+
+  .placeholder\:text-muted-foreground::placeholder {
+    color: var(--color-text-dim) !important;
+  }
+
+  .recharts-background {
+    fill: transparent !important;
+  }
+
+  svg text {
+    fill: var(--color-text-muted) !important;
+  }
+
+  svg line {
+    stroke: var(--color-border) !important;
+  }
+
+  /* Force hand cursor across all clickable elements */
+  button,
+  a,
+  [role="button"],
+  [role="tab"],
+  [role="checkbox"],
+  [role="switch"],
+  [role="option"],
+  [role="menuitem"],
+  select,
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  .tag,
+  .btn-primary,
+  .btn-ghost,
+  .btn-hero-dashboard,
+  .badge-clickable,
+  [data-state="checked"],
+  [data-state="unchecked"],
+  [data-radix-collection-item] {
+    cursor: pointer !important;
+  }
+}
+
+/* =============================================
+   DARK MODE SPECIFIC OVERRIDES
+   ============================================= */
+html[data-theme="dark"], [data-theme="dark"] {
+  .bg-white, [style*="background-color: white"], [style*="background-color: #fff"], [style*="background-color: #ffffff"] {
+    background-color: var(--color-bg-raised) !important;
+  }
+
+  input, select, textarea, option {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text-primary) !important;
+    border-color: var(--color-border) !important;
+  }
+
+  tbody tr:hover td {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+  }
+
+  .bg-slate-900, .bg-slate-800, .bg-slate-700, .bg-slate-600, .bg-slate-50, .bg-slate-100 {
+    background-color: var(--color-surface) !important;
+  }
+
+  .shadow-sm, .shadow {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .btn-hero-dashboard {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .btn-hero-dashboard:hover {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+  }
+
+  .scroll-indicator-wrap {
+    opacity: 0.5 !important;
+  }
+
+  .scroll-indicator-text {
+    color: var(--color-text-dim) !important;
+  }
+
+  .scroll-indicator-mouse {
+    border-color: var(--color-text-dim) !important;
+    background-color: transparent !important;
+  }
+
+  .scroll-indicator-dot {
+    background-color: var(--color-cyan) !important;
+  }
+}
+
+/* =============================================
+   LIGHT MODE SPECIFIC OVERRIDES
+   ============================================= */
+html[data-theme="light"], [data-theme="light"] {
+  .bg-white {
+    background-color: #ffffff !important;
+  }
+
+  input, select, textarea, option {
+    background-color: #ffffff !important;
+    color: var(--color-text-primary) !important;
+    border-color: var(--color-border) !important;
+  }
+
+  thead th, thead td {
+    background-color: var(--color-bg-elevated) !important;
+    color: var(--color-text-muted) !important;
+  }
+
+  tbody tr:hover td {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+  }
+
+  .bg-slate-900, .bg-slate-800, .bg-slate-700 {
+    background-color: var(--color-bg-elevated) !important;
+  }
+
+  .text-slate-100, .text-slate-200, .text-slate-300 {
+    color: var(--color-text-secondary) !important;
+  }
+
+  .shadow-sm, .shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* Explore Dashboard Button in Light Mode: Blue background with White text */
+  .btn-hero-dashboard {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border: 1px solid #1d4ed8 !important;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35) !important;
+  }
+
+  .btn-hero-dashboard:hover {
+    background-color: #1d4ed8 !important;
+    color: #ffffff !important;
+  }
+
+  /* Darkened Scroll Icon & Text in Light Mode */
+  .scroll-indicator-wrap {
+    opacity: 0.95 !important;
+  }
+
+  .scroll-indicator-text {
+    color: #334155 !important;
+    font-weight: 700 !important;
+  }
+
+  .scroll-indicator-mouse {
+    border-color: #334155 !important;
+    background-color: rgba(241, 245, 249, 0.8) !important;
+  }
+
+  .scroll-indicator-dot {
+    background-color: #2563eb !important;
+  }
+}
