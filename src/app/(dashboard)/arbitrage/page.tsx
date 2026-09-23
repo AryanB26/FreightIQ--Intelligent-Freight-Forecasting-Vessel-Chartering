@@ -1,17 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { runArbitrageRadar, ArbitrageAnalysis } from "@/services/arbitrage/radar-engine";
+import { freightRoutes } from "@/data/seed/freight-market-generator";
 
 export default function ArbitrageRadarPage() {
   const [routeId, setRouteId] = useState("fr-001");
-  const [vesselClass, setVesselClass] = useState("Capesize");
+  const currentRoute = freightRoutes.find(r => r.id === routeId) || freightRoutes[0];
+  const [vesselClass, setVesselClass] = useState(currentRoute.vesselClasses.includes("Capesize") ? "Capesize" : currentRoute.vesselClasses[0]);
   const [currentContractAsk, setCurrentContractAsk] = useState(15);
   const [analysis, setAnalysis] = useState<ArbitrageAnalysis | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (currentRoute && !currentRoute.vesselClasses.includes(vesselClass as any)) {
+      setVesselClass(currentRoute.vesselClasses[0]);
+    }
+  }, [routeId, currentRoute, vesselClass]);
 
   const handleRunRadar = () => {
     setLoading(true);
@@ -48,6 +56,8 @@ export default function ArbitrageRadarPage() {
                 <option value="fr-001">Australia &rarr; India East Coast</option>
                 <option value="fr-004">Indonesia &rarr; India East Coast</option>
                 <option value="fr-007">US Gulf &rarr; India East Coast</option>
+                <option value="fr-009">Mozambique &rarr; India East Coast</option>
+                <option value="fr-010">Russia &rarr; India East Coast</option>
               </select>
             </div>
 
@@ -58,9 +68,9 @@ export default function ArbitrageRadarPage() {
                 onChange={(e) => setVesselClass(e.target.value)}
                 className="w-full px-3 py-2 text-sm border rounded-md bg-background"
               >
-                <option value="Capesize">Capesize</option>
-                <option value="Panamax">Panamax</option>
-                <option value="Supramax">Supramax</option>
+                {currentRoute?.vesselClasses.map(vc => (
+                  <option key={vc} value={vc}>{vc}</option>
+                ))}
               </select>
             </div>
 
