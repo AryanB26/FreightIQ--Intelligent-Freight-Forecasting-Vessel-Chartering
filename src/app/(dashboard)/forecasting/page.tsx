@@ -312,7 +312,7 @@ function ForecastChart({ forecast, currentRate }: { forecast: ForecastResult; cu
   const yTicks = Array.from({ length: gridLines }, (_, i) => minR + (range * i) / (gridLines - 1));
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-48">
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-72">
       {/* Grid */}
       {yTicks.map((tick, i) => (
         <g key={i}>
@@ -373,7 +373,7 @@ function BacktestChart({ backtest }: { backtest: BacktestResult }) {
   const predPath = predicted.map((v, i) => `${i === 0 ? "M" : "L"}${xScale(i)},${yScale(v)}`).join(" ");
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-40">
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto max-h-[300px]">
       <path d={actualPath} fill="none" stroke="#3b82f6" strokeWidth="1.5" />
       <path d={predPath} fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,2" />
       <text x={pad.left} y={H - 3} fontSize="7" fill="#9ca3af">{dates[0]?.slice(5)}</text>

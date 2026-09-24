@@ -285,7 +285,7 @@ export default function HomePage() {
               {flowSteps.map((step, i) => (
                 <div key={i} className="reveal w-full max-w-md" style={{ transitionDelay: `${i * 80}ms` }}>
                   <div
-                    className="flex items-center gap-4 p-4 rounded-lg border transition-all duration-200 hover:border-[var(--color-cyan-dim)]"
+                    className="flex items-center justify-center relative p-4 rounded-lg border transition-all duration-200 hover:border-[var(--color-cyan-dim)]"
                     style={{
                       background: "rgba(13, 19, 35, 0.8)",
                       backdropFilter: "blur(10px)",
@@ -293,18 +293,17 @@ export default function HomePage() {
                       borderColor: "var(--color-border)",
                     }}
                   >
-                    <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-[12px] font-bold shrink-0"
-                      style={{ background: "rgba(6,182,212,0.12)", color: "var(--color-cyan)" }}
-                    >
-                      {i + 1}
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-[12px] font-bold shrink-0"
+                        style={{ background: "rgba(6,182,212,0.12)", color: "var(--color-cyan)" }}
+                      >
+                        {i + 1}
+                      </div>
+                      <span className="text-[13px] font-medium" style={{ color: "var(--color-text-primary)" }}>
+                        {step}
+                      </span>
                     </div>
-                    <span className="text-[13px] font-medium" style={{ color: "var(--color-text-primary)" }}>
-                      {step}
-                    </span>
-                    <span className="ml-auto text-[11px] font-mono" style={{ color: "var(--color-text-dim)" }}>
-                      {i < 2 ? "PHASE 4-6" : i < 4 ? "PHASE 3,8" : i < 5 ? "PHASE 10" : "PHASE 7-8"}
-                    </span>
                   </div>
                   {i < flowSteps.length - 1 && (
                     <div className="flex justify-center py-1.5">
